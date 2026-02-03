@@ -15,16 +15,19 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  html {
+    scroll-behavior: auto; /* Let Lenis handle it */
+  }
+
   body {
     @apply bg-primary-cream text-neutral-gray-900 antialiased;
     font-family: 'Inter', -apple-system, sans-serif;
     font-weight: 400;
     letter-spacing: -0.01em;
     line-height: 1.6;
-  }
-
-  html {
-    scroll-behavior: auto; /* Let Lenis handle it */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
   }
 
   h1, .display {
@@ -42,6 +45,17 @@
   ::selection {
     background: #DE6E27;
     color: white;
+  }
+
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
@@ -99,4 +113,27 @@ html.lenis {
 
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid #DE6E27;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #DE6E27;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
 }

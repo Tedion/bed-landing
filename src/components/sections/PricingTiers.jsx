@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 
 const PricingTiers = () => {
@@ -37,22 +37,23 @@ const PricingTiers = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-32 px-8 overflow-hidden"
-      style={{
-        background: 'linear-gradient(to bottom, #FBF8EF 0%, white 50%, #FBF8EF 100%)'
-      }}
+      className="relative py-24 sm:py-32 px-6 sm:px-8 overflow-hidden bg-gradient-to-b from-[#FFF5EB] via-white to-[#FFF5EB]"
     >
-      {/* Animated background element */}
-      <motion.div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-[#DE6E27] opacity-[0.03] blur-[150px]"
-        style={{ y: yBg }}
-      />
+      {/* Enhanced background decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-[#FF6B35]/6 to-[#FF8C5A]/4 blur-[150px]"
+          style={{ y: yBg }}
+        />
+        <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-gradient-to-br from-[#FFB88C]/5 to-[#FF8C5A]/3 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-0 w-[600px] h-[600px] bg-gradient-to-br from-[#FF6B35]/5 to-[#FF8C5A]/3 rounded-full blur-3xl" />
+      </div>
       
       <div className="max-w-[1300px] mx-auto relative z-10">
         
         {/* Header with stagger */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-16 sm:mb-20"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
@@ -62,7 +63,7 @@ const PricingTiers = () => {
           }}
         >
           <motion.h2 
-            className="text-5xl md:text-7xl font-serif mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif mb-6 bg-gradient-to-r from-[#2B3210] via-[#404040] to-[#2B3210] bg-clip-text text-transparent"
             variants={{
               hidden: { opacity: 0, y: 30 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.8 }}
@@ -72,7 +73,7 @@ const PricingTiers = () => {
           </motion.h2>
           
           <motion.p 
-            className="text-xl text-gray-600 font-light"
+            className="text-lg sm:text-xl text-gray-700 font-light max-w-2xl mx-auto"
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.8 }}
@@ -84,7 +85,7 @@ const PricingTiers = () => {
         
         {/* Two-column pricing grid */}
         <motion.div
-          className="grid md:grid-cols-2 gap-8"
+          className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
@@ -112,26 +113,26 @@ const PricingTiers = () => {
             }}
             className="relative group transform-gpu"
           >
-            <div className="relative bg-white rounded-[40px] p-12 shadow-[0_30px_90px_-20px_rgba(0,0,0,0.12)] border border-gray-100 overflow-hidden h-full">
+            <div className="relative bg-white rounded-[40px] p-8 sm:p-12 shadow-[0_30px_90px_-20px_rgba(0,0,0,0.12)] border-2 border-gray-100 overflow-hidden h-full">
               
               {/* Hover gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#2B3210]/0 to-[#2B3210]/0 group-hover:from-[#2B3210]/5 group-hover:to-transparent transition-all duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#FF6B35]/0 to-[#FF8C5A]/0 group-hover:from-[#FF6B35]/5 group-hover:to-transparent transition-all duration-500" />
               
               {/* Badge */}
               <motion.div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#BB8853]/10 to-[#BB8853]/5 mb-8"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#FFB88C]/20 to-[#FF8C5A]/15 mb-6 sm:mb-8 border border-[#FF8C5A]/20"
                 whileHover={{ scale: 1.05 }}
               >
-                <div className="w-1.5 h-1.5 rounded-full bg-[#BB8853]" />
-                <span className="text-xs font-semibold tracking-wider uppercase text-[#BB8853]">Foundation</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-[#FF6B35]" />
+                <span className="text-xs font-semibold tracking-wider uppercase text-[#FF6B35]">Foundation</span>
               </motion.div>
               
-              <h3 className="text-4xl font-serif mb-2 text-gray-900">Core Access</h3>
+              <h3 className="text-3xl sm:text-4xl font-serif mb-2 text-gray-900">Core Access</h3>
               
               {/* Price with animated entrance */}
-              <div className="flex items-baseline gap-2 mb-12">
+              <div className="flex items-baseline gap-2 mb-8 sm:mb-12">
                 <motion.span 
-                  className="text-6xl md:text-7xl font-bold text-[#DE6E27]"
+                  className="text-5xl sm:text-6xl md:text-7xl font-bold bg-gradient-to-r from-[#FF6B35] to-[#FF8C5A] bg-clip-text text-transparent"
                   initial={{ scale: 0.5, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}
@@ -139,12 +140,12 @@ const PricingTiers = () => {
                 >
                   $47
                 </motion.span>
-                <span className="text-2xl text-gray-400 font-light">/mo</span>
+                <span className="text-xl sm:text-2xl text-gray-400 font-light">/mo</span>
               </div>
               
               {/* Features with stagger */}
               <motion.ul 
-                className="space-y-4 mb-12"
+                className="space-y-3 sm:space-y-4 mb-8 sm:mb-12"
                 variants={{
                   hidden: {},
                   visible: { transition: { staggerChildren: 0.08 }}
@@ -153,14 +154,14 @@ const PricingTiers = () => {
                 {coreFeatures.map((feature, i) => (
                   <motion.li
                     key={i}
-                    className="flex items-start gap-3 text-gray-700"
+                    className="flex items-start gap-3 text-gray-700 text-sm sm:text-base"
                     variants={{
                       hidden: { opacity: 0, x: -20 },
                       visible: { opacity: 1, x: 0 }
                     }}
                   >
                     <motion.svg 
-                      className="w-5 h-5 text-[#DE6E27] mt-0.5 flex-shrink-0" 
+                      className="w-5 h-5 text-[#FF6B35] mt-0.5 flex-shrink-0" 
                       fill="currentColor" 
                       viewBox="0 0 20 20"
                       whileHover={{ scale: 1.2, rotate: 360 }}
@@ -175,10 +176,11 @@ const PricingTiers = () => {
               
               {/* CTA Button */}
               <motion.button 
-                className="relative w-full py-4 bg-[#2B3210] text-white rounded-2xl font-medium overflow-hidden group/btn"
+                className="relative w-full py-4 bg-gradient-to-r from-[#2B3210] to-[#404040] text-white rounded-2xl font-medium overflow-hidden group/btn shadow-lg"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={scrollToForm}
+                aria-label="Get started with Core Access"
               >
                 <span className="relative z-10">Get Started</span>
                 <motion.div
@@ -211,7 +213,7 @@ const PricingTiers = () => {
           >
             {/* Animated glow */}
             <motion.div 
-              className="absolute inset-0 bg-gradient-to-r from-[#DE6E27] to-[#C85D20] rounded-[40px] blur-2xl opacity-0 group-hover:opacity-25 transition-opacity duration-500"
+              className="absolute inset-0 bg-gradient-to-r from-[#FF6B35] to-[#FF8C5A] rounded-[40px] blur-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"
               animate={{
                 scale: [1, 1.05, 1],
               }}
@@ -222,11 +224,11 @@ const PricingTiers = () => {
               }}
             />
             
-            <div className="relative bg-gradient-to-br from-[#DE6E27] to-[#C85D20] rounded-[40px] p-12 text-white shadow-[0_40px_120px_-20px_rgba(222,110,39,0.4)] overflow-hidden h-full">
+            <div className="relative bg-gradient-to-br from-[#FF6B35] via-[#FF8C5A] to-[#FF5722] rounded-[40px] p-8 sm:p-12 text-white shadow-[0_40px_120px_-20px_rgba(255,107,53,0.5)] overflow-hidden h-full">
               
               {/* Animated shine effect */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent"
+                className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-transparent"
                 animate={{ x: ['-100%', '100%'] }}
                 transition={{
                   duration: 3,
@@ -240,14 +242,14 @@ const PricingTiers = () => {
               {[...Array(4)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute w-2 h-2 rounded-full bg-white/20"
+                  className="absolute w-2 h-2 rounded-full bg-white/30"
                   style={{
                     left: `${25 + i * 20}%`,
                     top: `${15 + i * 20}%`,
                   }}
                   animate={{
                     y: [0, -30, 0],
-                    opacity: [0, 0.6, 0],
+                    opacity: [0, 0.7, 0],
                     scale: [0, 1.5, 0],
                   }}
                   transition={{
@@ -261,27 +263,27 @@ const PricingTiers = () => {
               
               {/* Badge */}
               <motion.div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm mb-8"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/25 backdrop-blur-sm mb-6 sm:mb-8 border border-white/30"
                 whileHover={{ scale: 1.05 }}
                 animate={{ 
-                  boxShadow: ['0 0 0 0 rgba(255,255,255,0.4)', '0 0 0 8px rgba(255,255,255,0)', '0 0 0 0 rgba(255,255,255,0)']
+                  boxShadow: ['0 0 0 0 rgba(255,255,255,0.5)', '0 0 0 8px rgba(255,255,255,0)', '0 0 0 0 rgba(255,255,255,0)']
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
                 <motion.div 
                   className="w-1.5 h-1.5 rounded-full bg-white"
-                  animate={{ opacity: [1, 0.3, 1] }}
+                  animate={{ opacity: [1, 0.4, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
                 <span className="text-xs font-semibold tracking-wider uppercase">Priority</span>
               </motion.div>
               
-              <h3 className="text-4xl font-serif mb-2">Full Access</h3>
+              <h3 className="text-3xl sm:text-4xl font-serif mb-2">Full Access</h3>
               
               {/* Price */}
-              <div className="flex items-baseline gap-2 mb-12">
+              <div className="flex items-baseline gap-2 mb-8 sm:mb-12">
                 <motion.span 
-                  className="text-6xl md:text-7xl font-bold"
+                  className="text-5xl sm:text-6xl md:text-7xl font-bold"
                   initial={{ scale: 0.5, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}
@@ -289,12 +291,12 @@ const PricingTiers = () => {
                 >
                   $247
                 </motion.span>
-                <span className="text-2xl text-white/60 font-light">/mo</span>
+                <span className="text-xl sm:text-2xl text-white/70 font-light">/mo</span>
               </div>
               
               {/* Features */}
               <motion.ul 
-                className="space-y-4 mb-12"
+                className="space-y-3 sm:space-y-4 mb-8 sm:mb-12"
                 variants={{
                   hidden: {},
                   visible: { transition: { staggerChildren: 0.08 }}
@@ -303,7 +305,7 @@ const PricingTiers = () => {
                 {fullFeatures.map((feature, i) => (
                   <motion.li
                     key={i}
-                    className="flex items-start gap-3"
+                    className="flex items-start gap-3 text-sm sm:text-base"
                     variants={{
                       hidden: { opacity: 0, x: -20 },
                       visible: { opacity: 1, x: 0 }
@@ -325,10 +327,11 @@ const PricingTiers = () => {
               
               {/* CTA Button */}
               <motion.button 
-                className="relative w-full py-4 bg-white text-[#DE6E27] rounded-2xl font-semibold overflow-hidden group/btn"
-                whileHover={{ scale: 1.02, boxShadow: '0 20px 40px rgba(0,0,0,0.2)' }}
+                className="relative w-full py-4 bg-white text-[#FF6B35] rounded-2xl font-semibold overflow-hidden group/btn shadow-xl"
+                whileHover={{ scale: 1.02, boxShadow: '0 25px 50px rgba(0,0,0,0.25)' }}
                 whileTap={{ scale: 0.98 }}
                 onClick={scrollToForm}
+                aria-label="Get started with Full Access"
               >
                 <span className="relative z-10">Get Started</span>
                 <motion.div
@@ -345,7 +348,7 @@ const PricingTiers = () => {
         
         {/* Disclaimer with fade-in */}
         <motion.p
-          className="text-center mt-12 text-sm text-gray-500 italic"
+          className="text-center mt-8 sm:mt-12 text-sm text-gray-600 italic"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

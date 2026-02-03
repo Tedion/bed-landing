@@ -43,39 +43,55 @@ const RotatingLogo = ({ size = 'xlarge', className = '', style = {} }) => {
         opacity: opacity || style.opacity,
       }}
     >
-      {/* Rotating SVG with PREMIUM effects */}
+      {/* Rotating SVG with ENHANCED premium effects */}
       <motion.svg
         viewBox={`0 0 ${dims.viewBox} ${dims.viewBox}`}
         className="absolute inset-0 w-full h-full"
         animate={{ rotate: 360 }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         style={{ 
-          filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.15))',
+          filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.2)) drop-shadow(0 10px 20px rgba(222,110,39,0.3))',
           transformOrigin: 'center center',
         }}
       >
         <defs>
-          {/* Ultra-realistic sphere gradient with 6 stops */}
-          <radialGradient id={`premiumSphere-${size}`} cx="32%" cy="32%">
-            <stop offset="0%" stopColor="#F8B882" />
-            <stop offset="20%" stopColor="#F0955F" />
-            <stop offset="40%" stopColor="#E8773D" />
+          {/* Enhanced ultra-realistic sphere gradient with 8 stops for smoother transitions */}
+          <radialGradient id={`premiumSphere-${size}`} cx="30%" cy="30%">
+            <stop offset="0%" stopColor="#FFF4E6" stopOpacity="0.9" />
+            <stop offset="15%" stopColor="#F8B882" />
+            <stop offset="30%" stopColor="#F0955F" />
+            <stop offset="45%" stopColor="#E8773D" />
             <stop offset="60%" stopColor="#DE6E27" />
-            <stop offset="85%" stopColor="#C85D20" />
+            <stop offset="75%" stopColor="#C85D20" />
+            <stop offset="90%" stopColor="#B85A1F" />
             <stop offset="100%" stopColor="#A84D1A" />
           </radialGradient>
           
-          {/* Specular highlight for glossy effect */}
+          {/* Enhanced specular highlight for more realistic glossy effect */}
           <radialGradient id={`specular-${size}`} cx="28%" cy="28%">
             <stop offset="0%" stopColor="white" stopOpacity="0.5" />
             <stop offset="35%" stopColor="white" stopOpacity="0.25" />
             <stop offset="65%" stopColor="white" stopOpacity="0" />
           </radialGradient>
           
-          {/* Inner shadow for depth */}
+          {/* Secondary highlight for more depth */}
+          <radialGradient id={`secondaryHighlight-${size}`} cx="70%" cy="70%">
+            <stop offset="0%" stopColor="rgba(255,255,255,0.15)" />
+            <stop offset="50%" stopColor="rgba(255,255,255,0.05)" />
+            <stop offset="100%" stopColor="transparent" />
+          </radialGradient>
+          
+          {/* Enhanced inner shadow for more depth */}
           <radialGradient id={`innerGlow-${size}`} cx="50%" cy="50%">
             <stop offset="75%" stopColor="transparent" />
             <stop offset="100%" stopColor="black" stopOpacity="0.2" />
+          </radialGradient>
+          
+          {/* Outer glow for ambient lighting */}
+          <radialGradient id={`outerGlow-${size}`} cx="50%" cy="50%">
+            <stop offset="0%" stopColor="rgba(222,110,39,0.2)" />
+            <stop offset="50%" stopColor="rgba(222,110,39,0.1)" />
+            <stop offset="100%" stopColor="transparent" />
           </radialGradient>
           
           {/* Circular text path */}
@@ -85,7 +101,16 @@ const RotatingLogo = ({ size = 'xlarge', className = '', style = {} }) => {
           />
         </defs>
         
-        {/* Main sphere with depth */}
+        {/* Outer glow layer */}
+        <circle 
+          cx={center} 
+          cy={center} 
+          r={dims.circleRadius * 1.1} 
+          fill={`url(#outerGlow-${size})`} 
+          opacity="0.6"
+        />
+        
+        {/* Main sphere with enhanced depth */}
         <circle 
           cx={center} 
           cy={center} 
@@ -102,7 +127,16 @@ const RotatingLogo = ({ size = 'xlarge', className = '', style = {} }) => {
           fill={`url(#specular-${size})`} 
         />
         
-        {/* Inner shadow for depth */}
+        {/* Secondary highlight for more realism */}
+        <ellipse 
+          cx={center * 0.72} 
+          cy={center * 0.75} 
+          rx={dims.circleRadius * 0.25} 
+          ry={dims.circleRadius * 0.2} 
+          fill={`url(#secondaryHighlight-${size})`} 
+        />
+        
+        {/* Enhanced inner shadow for depth */}
         <circle 
           cx={center} 
           cy={center} 
@@ -141,50 +175,62 @@ const RotatingLogo = ({ size = 'xlarge', className = '', style = {} }) => {
       {/* PREMIUM "OB" with proper overlap and depth */}
       <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="relative"
           style={{ marginLeft: size === 'xlarge' ? '-15px' : `-${dims.obSize * 0.08}px` }}
         >
-          {/* "O" - Pure white with stronger contrast */}
-          <span
-            style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
-              fontSize: `${dims.obSize}px`,
-              fontWeight: 800,
-              letterSpacing: '-0.04em',
-              background: 'linear-gradient(165deg, #FFFFFF 0%, #FFFFFF 30%, #FBF8EF 70%, #E8DED0 100%)',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              position: 'relative',
-              zIndex: 2,
-              marginRight: size === 'xlarge' ? '-42px' : `-${dims.obSize * 0.22}px`,
-              filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.2))',
+          <motion.div
+            animate={{ 
+              y: [0, -12, 0],
+              rotate: [0, 0.5, 0]
+            }}
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut"
             }}
           >
-            O
-          </span>
-          
-          {/* "B" - Stronger tan */}
-          <span
-            style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
-              fontSize: `${dims.obSize}px`,
-              fontWeight: 800,
-              letterSpacing: '-0.04em',
-              background: 'linear-gradient(165deg, #E5C7B1 0%, #D4B5A0 40%, #C2A58E 100%)',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              position: 'relative',
-              zIndex: 1,
-              filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.15))',
-            }}
-          >
-            B
-          </span>
+            {/* "O" - Pure white with stronger contrast */}
+            <span
+              style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontSize: `${dims.obSize}px`,
+                fontWeight: 800,
+                letterSpacing: '-0.04em',
+                background: 'linear-gradient(165deg, #FFFFFF 0%, #FFFFFF 30%, #FBF8EF 70%, #E8DED0 100%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                position: 'relative',
+                zIndex: 2,
+                marginRight: size === 'xlarge' ? '-42px' : `-${dims.obSize * 0.22}px`,
+                filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.2))',
+              }}
+            >
+              O
+            </span>
+            
+            {/* "B" - Stronger tan */}
+            <span
+              style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontSize: `${dims.obSize}px`,
+                fontWeight: 800,
+                letterSpacing: '-0.04em',
+                background: 'linear-gradient(165deg, #E5C7B1 0%, #D4B5A0 40%, #C2A58E 100%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                position: 'relative',
+                zIndex: 1,
+                filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.15))',
+              }}
+            >
+              B
+            </span>
+          </motion.div>
         </motion.div>
       </div>
     </motion.div>

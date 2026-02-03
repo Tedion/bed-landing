@@ -20,14 +20,30 @@ export default {
           forest: '#E5E2D9',
           tan: '#505631',
           copper: '#BB8853',
+          // Enhanced vibrant colors
+          orange: '#FF6B35',
+          coral: '#FF8C5A',
+          peach: '#FFB88C',
         },
         neutral: {
           white: '#FFFFFF',
           gray: {
             50: '#FAFAFA',
             100: '#F5F5F5',
-            900: '#393939',
+            200: '#E5E5E5',
+            300: '#D4D4D4',
+            400: '#A3A3A3',
+            500: '#737373',
+            600: '#525252',
+            700: '#404040',
+            800: '#262626',
+            900: '#171717',
           },
+        },
+        accent: {
+          light: '#FFF5EB',
+          warm: '#FFE4CC',
+          soft: '#FFD4A3',
         },
       },
       animation: {
