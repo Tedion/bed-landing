@@ -13,6 +13,19 @@ export default {
         mono: ['SF Mono', 'Monaco', 'Inconsolata', 'monospace'],
       },
       colors: {
+        brand: {
+          // Exact brand colors from style guide
+          sage: '#2B3210',        // Muted forest green
+          cream: '#FBF8EF',       // Very light peachy cream
+          terracotta: '#DE6E27',  // Warm terracotta orange
+          beige: '#E5E2D9',       // Light beige/off-white
+          olive: '#505631',       // Warm sandy brown/olive green
+          // Refined color variations for better duo
+          terracottaLight: '#E87A35',
+          terracottaDark: '#C85D20',
+          sageLight: '#3A4220',
+          sageDark: '#1A1F0A',
+        },
         primary: {
           sage: '#2B3210',
           cream: '#FBF8EF',
@@ -20,10 +33,6 @@ export default {
           forest: '#E5E2D9',
           tan: '#505631',
           copper: '#BB8853',
-          // Enhanced vibrant colors
-          orange: '#FF6B35',
-          coral: '#FF8C5A',
-          peach: '#FFB88C',
         },
         neutral: {
           white: '#FFFFFF',
@@ -39,11 +48,6 @@ export default {
             800: '#262626',
             900: '#171717',
           },
-        },
-        accent: {
-          light: '#FFF5EB',
-          warm: '#FFE4CC',
-          soft: '#FFD4A3',
         },
       },
       animation: {

@@ -44,10 +44,10 @@ function App() {
   }, [])
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-[#FFF5EB]">
-      {/* Scroll progress bar with vibrant gradient */}
+    <div ref={containerRef} className="min-h-screen bg-brand-cream">
+      {/* Scroll progress bar with brand terracotta */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FF6B35] via-[#FF8C5A] to-[#FF6B35] origin-left z-[100]"
+        className="fixed top-0 left-0 right-0 h-1 bg-brand-terracotta origin-left z-[100]"
         style={{ scaleX: scrollYProgress }}
         aria-hidden="true"
       />

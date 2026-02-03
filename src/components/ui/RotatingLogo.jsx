@@ -43,7 +43,7 @@ const RotatingLogo = ({ size = 'xlarge', className = '', style = {} }) => {
         opacity: opacity || style.opacity,
       }}
     >
-      {/* Rotating SVG with ENHANCED premium effects */}
+      {/* Rotating SVG with brand colors */}
       <motion.svg
         viewBox={`0 0 ${dims.viewBox} ${dims.viewBox}`}
         className="absolute inset-0 w-full h-full"
@@ -55,8 +55,8 @@ const RotatingLogo = ({ size = 'xlarge', className = '', style = {} }) => {
         }}
       >
         <defs>
-          {/* Enhanced ultra-realistic sphere gradient with 8 stops for smoother transitions */}
-          <radialGradient id={`premiumSphere-${size}`} cx="30%" cy="30%">
+          {/* Brand terracotta gradient */}
+          <radialGradient id={`brandSphere-${size}`} cx="30%" cy="30%">
             <stop offset="0%" stopColor="#FFF4E6" stopOpacity="0.9" />
             <stop offset="15%" stopColor="#F8B882" />
             <stop offset="30%" stopColor="#F0955F" />
@@ -67,27 +67,27 @@ const RotatingLogo = ({ size = 'xlarge', className = '', style = {} }) => {
             <stop offset="100%" stopColor="#A84D1A" />
           </radialGradient>
           
-          {/* Enhanced specular highlight for more realistic glossy effect */}
+          {/* Specular highlight */}
           <radialGradient id={`specular-${size}`} cx="28%" cy="28%">
             <stop offset="0%" stopColor="white" stopOpacity="0.5" />
             <stop offset="35%" stopColor="white" stopOpacity="0.25" />
             <stop offset="65%" stopColor="white" stopOpacity="0" />
           </radialGradient>
           
-          {/* Secondary highlight for more depth */}
+          {/* Secondary highlight */}
           <radialGradient id={`secondaryHighlight-${size}`} cx="70%" cy="70%">
             <stop offset="0%" stopColor="rgba(255,255,255,0.15)" />
             <stop offset="50%" stopColor="rgba(255,255,255,0.05)" />
             <stop offset="100%" stopColor="transparent" />
           </radialGradient>
           
-          {/* Enhanced inner shadow for more depth */}
+          {/* Inner shadow */}
           <radialGradient id={`innerGlow-${size}`} cx="50%" cy="50%">
             <stop offset="75%" stopColor="transparent" />
             <stop offset="100%" stopColor="black" stopOpacity="0.2" />
           </radialGradient>
           
-          {/* Outer glow for ambient lighting */}
+          {/* Outer glow */}
           <radialGradient id={`outerGlow-${size}`} cx="50%" cy="50%">
             <stop offset="0%" stopColor="rgba(222,110,39,0.2)" />
             <stop offset="50%" stopColor="rgba(222,110,39,0.1)" />
@@ -110,12 +110,12 @@ const RotatingLogo = ({ size = 'xlarge', className = '', style = {} }) => {
           opacity="0.6"
         />
         
-        {/* Main sphere with enhanced depth */}
+        {/* Main sphere with brand terracotta */}
         <circle 
           cx={center} 
           cy={center} 
           r={dims.circleRadius} 
-          fill={`url(#premiumSphere-${size})`} 
+          fill={`url(#brandSphere-${size})`} 
         />
         
         {/* Specular highlight */}
@@ -127,7 +127,7 @@ const RotatingLogo = ({ size = 'xlarge', className = '', style = {} }) => {
           fill={`url(#specular-${size})`} 
         />
         
-        {/* Secondary highlight for more realism */}
+        {/* Secondary highlight */}
         <ellipse 
           cx={center * 0.72} 
           cy={center * 0.75} 
@@ -136,7 +136,7 @@ const RotatingLogo = ({ size = 'xlarge', className = '', style = {} }) => {
           fill={`url(#secondaryHighlight-${size})`} 
         />
         
-        {/* Enhanced inner shadow for depth */}
+        {/* Inner shadow */}
         <circle 
           cx={center} 
           cy={center} 
@@ -154,7 +154,7 @@ const RotatingLogo = ({ size = 'xlarge', className = '', style = {} }) => {
           strokeWidth="1.5" 
         />
         
-        {/* PREMIUM rotating text with shadow */}
+        {/* Rotating text */}
         <text
           fontSize={dims.fontSize}
           fontWeight="600"
@@ -172,7 +172,7 @@ const RotatingLogo = ({ size = 'xlarge', className = '', style = {} }) => {
         </text>
       </motion.svg>
 
-      {/* PREMIUM "OB" with proper overlap and depth */}
+      {/* "OB" monogram */}
       <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
@@ -192,7 +192,7 @@ const RotatingLogo = ({ size = 'xlarge', className = '', style = {} }) => {
               ease: "easeInOut"
             }}
           >
-            {/* "O" - Pure white with stronger contrast */}
+            {/* "O" */}
             <span
               style={{
                 fontFamily: "'Playfair Display', Georgia, serif",
@@ -212,7 +212,7 @@ const RotatingLogo = ({ size = 'xlarge', className = '', style = {} }) => {
               O
             </span>
             
-            {/* "B" - Stronger tan */}
+            {/* "B" */}
             <span
               style={{
                 fontFamily: "'Playfair Display', Georgia, serif",

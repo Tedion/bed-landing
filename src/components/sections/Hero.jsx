@@ -21,15 +21,15 @@ const Hero = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center px-6 sm:px-8 overflow-hidden bg-gradient-to-br from-[#FFF5EB] via-[#FBF8EF] to-white"
+      className="relative min-h-screen flex items-center justify-center px-6 sm:px-8 overflow-hidden bg-gradient-to-br from-brand-cream via-white to-brand-cream"
     >
-      {/* Enhanced background with more vibrant colors */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#FFF5EB] via-white to-[#FBF8EF]" />
+      {/* Enhanced background with brand colors */}
+      <div className="absolute inset-0 bg-gradient-to-b from-brand-cream via-white to-brand-cream" />
       
-      {/* More vibrant decorative elements */}
-      <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-gradient-to-br from-[#FF6B35]/15 to-[#FF8C5A]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-[#FFB88C]/12 to-[#FF8C5A]/8 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#FF6B35]/8 rounded-full blur-3xl" />
+      {/* Decorative elements using brand terracotta */}
+      <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-brand-terracotta/8 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-terracotta/6 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-olive/5 rounded-full blur-3xl" />
       
       {/* Main content */}
       <div className="relative z-10 max-w-6xl mx-auto w-full">
@@ -45,24 +45,24 @@ const Hero = () => {
           >
             {/* Badge */}
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#FF6B35]/15 to-[#FF8C5A]/10 text-[#FF6B35] text-sm font-semibold mb-6 border border-[#FF6B35]/20"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-terracotta/10 text-brand-terracotta text-sm font-semibold mb-6 border border-brand-terracotta/20"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
             >
-              <div className="w-2 h-2 rounded-full bg-[#FF6B35] animate-pulse" />
+              <div className="w-2 h-2 rounded-full bg-brand-terracotta animate-pulse" />
               <span>33 years of AFH experience</span>
             </motion.div>
 
             {/* Headline */}
             <motion.h1 
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif mb-6 leading-[1.1] bg-gradient-to-r from-[#2B3210] via-[#404040] to-[#2B3210] bg-clip-text text-transparent"
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif mb-6 leading-[1.1] text-brand-sage"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
               Oregon's Professional{' '}
-              <span className="block mt-2 bg-gradient-to-r from-[#FF6B35] to-[#FF8C5A] bg-clip-text text-transparent">AFH Network</span>
+              <span className="block mt-2 text-brand-terracotta">AFH Network</span>
             </motion.h1>
             
             {/* Description */}
@@ -83,10 +83,10 @@ const Hero = () => {
               transition={{ delay: 0.7, duration: 0.8 }}
             >
               <motion.button
-                className="group relative px-8 py-4 bg-gradient-to-r from-[#FF6B35] to-[#FF8C5A] hover:from-[#FF5722] hover:to-[#FF6B35] text-white text-lg font-semibold rounded-full overflow-hidden shadow-xl shadow-[#FF6B35]/30"
+                className="group relative px-8 py-4 bg-brand-terracotta hover:bg-brand-terracottaDark text-white text-lg font-semibold rounded-full overflow-hidden shadow-xl shadow-brand-terracotta/30"
                 whileHover={{ 
                   scale: 1.05,
-                  boxShadow: '0 25px 50px rgba(255, 107, 53, 0.4)'
+                  boxShadow: '0 25px 50px rgba(222, 110, 39, 0.4)'
                 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={scrollToForm}
@@ -110,7 +110,7 @@ const Hero = () => {
               </motion.button>
               
               <motion.button
-                className="px-8 py-4 bg-white border-2 border-gray-200 hover:border-[#FF6B35] hover:text-[#FF6B35] text-gray-700 text-lg font-semibold rounded-full transition-all shadow-sm hover:shadow-md"
+                className="px-8 py-4 bg-white border-2 border-gray-200 hover:border-brand-terracotta hover:text-brand-terracotta text-gray-700 text-lg font-semibold rounded-full transition-all shadow-sm hover:shadow-md"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={scrollToForm}
@@ -127,15 +127,15 @@ const Hero = () => {
               transition={{ delay: 0.9, duration: 0.8 }}
             >
               {[
-                { icon: '✓', text: '250+ Providers', color: 'from-[#FF6B35] to-[#FF8C5A]' },
-                { icon: '✓', text: '1,200+ Placements', color: 'from-[#FF8C5A] to-[#FFB88C]' },
-                { icon: '✓', text: '24/7 Support', color: 'from-[#FF6B35] to-[#FF8C5A]' },
+                { icon: '✓', text: '250+ Providers' },
+                { icon: '✓', text: '1,200+ Placements' },
+                { icon: '✓', text: '24/7 Support' },
               ].map((item, index) => (
                 <div
                   key={index}
                   className="flex items-center gap-2 text-gray-700"
                 >
-                  <span className={`w-6 h-6 bg-gradient-to-br ${item.color} rounded-full flex items-center justify-center text-white text-sm font-bold shadow-sm`}>
+                  <span className="w-6 h-6 bg-brand-terracotta/10 rounded-full flex items-center justify-center text-brand-terracotta text-sm font-bold">
                     {item.icon}
                   </span>
                   <span className="text-sm font-medium">{item.text}</span>
@@ -190,7 +190,7 @@ const Hero = () => {
               cx="12"
               cy="12"
               r="4"
-              fill="#FF6B35"
+              fill="#DE6E27"
               animate={{ cy: [12, 24, 12], opacity: [1, 0.3, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             />

@@ -33,7 +33,7 @@ const Header = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       style={{
-        backgroundColor: scrolled ? 'rgba(255, 245, 235, 0.95)' : 'transparent',
+        backgroundColor: scrolled ? 'rgba(251, 248, 239, 0.95)' : 'transparent',
         backdropFilter: scrolled ? 'blur(10px)' : 'none',
         borderBottom: scrolled ? '1px solid rgba(0,0,0,0.05)' : 'none',
       }}
@@ -45,7 +45,7 @@ const Header = () => {
           className="flex items-center gap-3"
           style={{ opacity: logoOpacity }}
         >
-          {/* Enhanced mini logo with vibrant gradient */}
+          {/* Enhanced mini logo with brand colors */}
           <motion.div 
             className="relative w-10 h-10 sm:w-12 sm:h-12"
             whileHover={{ scale: 1.1, rotate: 5 }}
@@ -55,16 +55,16 @@ const Header = () => {
             <div 
               className="absolute inset-0 rounded-full blur-md opacity-50"
               style={{
-                background: 'radial-gradient(circle, rgba(255,107,53,0.5) 0%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(222,110,39,0.4) 0%, transparent 70%)',
               }}
             />
             
-            {/* Main circle with vibrant gradient */}
+            {/* Main circle with brand terracotta gradient */}
             <div 
               className="absolute inset-0 rounded-full shadow-lg"
               style={{
-                background: 'linear-gradient(135deg, #FF6B35 0%, #FF8C5A 50%, #FF5722 100%)',
-                boxShadow: '0 4px 12px rgba(255,107,53,0.5), inset 0 2px 4px rgba(255,255,255,0.3)',
+                background: 'linear-gradient(135deg, #DE6E27 0%, #C85D20 50%, #B85A1F 100%)',
+                boxShadow: '0 4px 12px rgba(222,110,39,0.4), inset 0 2px 4px rgba(255,255,255,0.2)',
               }}
             />
             
@@ -72,7 +72,7 @@ const Header = () => {
             <div 
               className="absolute inset-0 rounded-full"
               style={{
-                background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4) 0%, transparent 60%)',
+                background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 60%)',
               }}
             />
             
@@ -93,7 +93,7 @@ const Header = () => {
             
             {/* Inner rim for depth */}
             <div 
-              className="absolute inset-[2px] rounded-full border border-white/25"
+              className="absolute inset-[2px] rounded-full border border-white/20"
             />
           </motion.div>
           
@@ -116,8 +116,8 @@ const Header = () => {
         
         {/* Desktop CTA */}
         <motion.button 
-          className="hidden md:flex px-6 py-2.5 bg-gradient-to-r from-[#FF6B35] to-[#FF8C5A] hover:from-[#FF5722] hover:to-[#FF6B35] text-white font-medium rounded-full transition-all shadow-lg shadow-[#FF6B35]/30"
-          whileHover={{ scale: 1.05, boxShadow: '0 8px 16px rgba(255,107,53,0.4)' }}
+          className="hidden md:flex px-6 py-2.5 bg-brand-terracotta hover:bg-brand-terracottaDark text-white font-medium rounded-full transition-colors shadow-lg"
+          whileHover={{ scale: 1.05, boxShadow: '0 8px 16px rgba(222,110,39,0.3)' }}
           whileTap={{ scale: 0.95 }}
           onClick={scrollToForm}
         >
@@ -176,7 +176,7 @@ const Header = () => {
             >
               <motion.button
                 onClick={scrollToForm}
-                className="w-full px-6 py-3 bg-gradient-to-r from-[#FF6B35] to-[#FF8C5A] text-white rounded-full font-semibold hover:from-[#FF5722] hover:to-[#FF6B35] transition-all text-left shadow-lg"
+                className="w-full px-6 py-3 bg-brand-terracotta text-white rounded-full font-semibold hover:bg-brand-terracottaDark transition-colors text-left shadow-lg"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >

@@ -52,13 +52,13 @@ const FormSection = () => {
   }, [])
 
   return (
-    <section id="signup-form" ref={ref} className="relative py-32 px-8 overflow-hidden bg-gradient-to-b from-white via-[#FFF5EB] to-[#FBF8EF]">
-      {/* Enhanced background with vibrant colors */}
+    <section id="signup-form" ref={ref} className="relative py-32 px-8 overflow-hidden bg-gradient-to-b from-white via-brand-cream to-brand-cream">
+      {/* Enhanced background with brand colors */}
       <div className="absolute inset-0">
         {/* Multiple decorative elements for depth */}
-        <div className="absolute top-0 left-1/4 w-[700px] h-[700px] bg-gradient-to-br from-[#FF6B35]/12 to-[#FF8C5A]/10 rounded-full blur-3xl -translate-y-1/2" />
-        <div className="absolute bottom-0 right-1/4 w-[700px] h-[700px] bg-gradient-to-br from-[#FFB88C]/10 to-[#FF8C5A]/8 rounded-full blur-3xl translate-y-1/2" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-[#FF6B35]/8 to-[#FF8C5A]/6 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-[700px] h-[700px] bg-brand-terracotta/8 rounded-full blur-3xl -translate-y-1/2" />
+        <div className="absolute bottom-0 right-1/4 w-[700px] h-[700px] bg-brand-olive/6 rounded-full blur-3xl translate-y-1/2" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-terracotta/5 rounded-full blur-3xl" />
       </div>
       
       <div className="max-w-4xl mx-auto relative z-10">
@@ -78,13 +78,13 @@ const FormSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <span className="px-6 py-2 bg-gradient-to-r from-[#FF6B35]/20 to-[#FF8C5A]/15 text-[#FF6B35] rounded-full text-sm font-semibold shadow-sm border border-[#FF6B35]/20">
+            <span className="px-6 py-2 bg-brand-terracotta/15 text-brand-terracotta rounded-full text-sm font-semibold shadow-sm border border-brand-terracotta/20">
               Get Started
             </span>
           </motion.div>
           
           <motion.h2 
-            className="text-5xl md:text-7xl font-serif mb-6 bg-gradient-to-r from-[#2B3210] via-[#404040] to-[#2B3210] bg-clip-text text-transparent"
+            className="text-5xl md:text-7xl font-serif mb-6 text-brand-sage"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -103,7 +103,7 @@ const FormSection = () => {
           </motion.p>
         </motion.div>
         
-        {/* Form container with enhanced 3D effect and vibrant colors */}
+        {/* Form container with enhanced 3D effect and brand colors */}
         <motion.div
           className="relative transform-gpu"
           initial={{ opacity: 0, y: 60, rotateX: 15 }}
@@ -111,12 +111,12 @@ const FormSection = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Enhanced animated glow - more vibrant */}
+          {/* Enhanced animated glow with brand terracotta */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-[#FF6B35]/35 via-[#FF8C5A]/30 to-[#FF6B35]/35 blur-3xl rounded-[40px] -z-10"
+            className="absolute inset-0 bg-brand-terracotta/25 blur-3xl rounded-[40px] -z-10"
             animate={{
               scale: [1, 1.08, 1],
-              opacity: [0.5, 0.7, 0.5]
+              opacity: [0.4, 0.6, 0.4]
             }}
             transition={{
               duration: 4,
@@ -127,9 +127,9 @@ const FormSection = () => {
           
           {/* Additional outer glow ring */}
           <motion.div
-            className="absolute -inset-2 bg-gradient-to-r from-[#FF6B35]/25 to-[#FF8C5A]/20 rounded-[42px] blur-xl -z-20"
+            className="absolute -inset-2 bg-brand-terracotta/15 rounded-[42px] blur-xl -z-20"
             animate={{
-              opacity: [0.4, 0.6, 0.4]
+              opacity: [0.3, 0.5, 0.3]
             }}
             transition={{
               duration: 3,
@@ -138,7 +138,7 @@ const FormSection = () => {
             }}
           />
           
-          <div className="relative bg-white rounded-[40px] p-6 md:p-12 shadow-[0_50px_120px_-20px_rgba(255,107,53,0.3)] border-2 border-[#FF6B35]/15">
+          <div className="relative bg-white rounded-[40px] p-6 md:p-12 shadow-[0_50px_120px_-20px_rgba(222,110,39,0.25)] border-2 border-brand-terracotta/15">
             {/* Error state */}
             {formError && (
               <div className="flex flex-col items-center justify-center min-h-[400px] p-8 text-center">
@@ -151,7 +151,7 @@ const FormSection = () => {
                 <p className="text-gray-600 mb-6">Please try again later or contact us directly.</p>
                 <button
                   onClick={() => window.location.reload()}
-                  className="px-8 py-3 bg-gradient-to-r from-[#FF6B35] to-[#FF8C5A] text-white rounded-full font-semibold hover:from-[#FF5722] hover:to-[#FF6B35] transition-all shadow-lg"
+                  className="px-8 py-3 bg-brand-terracotta hover:bg-brand-terracottaDark text-white rounded-full font-semibold transition-colors shadow-lg"
                 >
                   Reload Page
                 </button>
@@ -162,9 +162,9 @@ const FormSection = () => {
             {!formLoaded && !formError && (
               <div className="flex flex-col items-center justify-center min-h-[600px] sm:min-h-[800px] lg:min-h-[952px]" role="status" aria-live="polite">
                 <div className="relative w-24 h-24 mb-6">
-                  <div className="absolute inset-0 border-4 border-[#FF6B35]/20 rounded-full"></div>
+                  <div className="absolute inset-0 border-4 border-brand-terracotta/20 rounded-full"></div>
                   <motion.div
-                    className="absolute inset-0 border-4 border-transparent border-t-[#FF6B35] rounded-full"
+                    className="absolute inset-0 border-4 border-transparent border-t-brand-terracotta rounded-full"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                   />
