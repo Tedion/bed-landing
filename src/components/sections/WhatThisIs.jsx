@@ -7,7 +7,7 @@ const WhatThisIs = () => {
 
   return (
     <section ref={ref} className="relative py-24 sm:py-32 px-6 sm:px-8 bg-white">
-      {/* Background decoration with brand colors */}
+      {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-brand-olive/3 rounded-full blur-3xl -translate-y-1/2" />
         <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-brand-terracotta/4 rounded-full blur-3xl translate-y-1/2" />
@@ -20,7 +20,7 @@ const WhatThisIs = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.4 }}
         >
-          {/* Dark card - using brand sage */}
+          {/* Dark card - Changed back to olive green */}
           <motion.div
             variants={{
               hidden: { x: -50, opacity: 0 },
@@ -34,7 +34,7 @@ const WhatThisIs = () => {
               scale: 1.02,
               transition: { duration: 0.3 }
             }}
-            className="relative p-10 sm:p-12 md:p-16 bg-gradient-to-br from-brand-sage to-brand-sageDark text-white overflow-hidden rounded-3xl shadow-xl"
+            className="relative p-10 sm:p-12 md:p-16 bg-gradient-to-br from-[#505631] to-[#3d4528] text-white overflow-hidden rounded-3xl shadow-xl"
           >
             {/* Ambient glow with brand terracotta */}
             <div className="absolute top-0 right-0 w-80 h-80 bg-brand-terracotta/10 blur-[120px]" />
@@ -49,7 +49,7 @@ const WhatThisIs = () => {
             </div>
           </motion.div>
           
-          {/* Light card - using brand cream */}
+          {/* Light card */}
           <motion.div
             variants={{
               hidden: { x: 50, opacity: 0 },

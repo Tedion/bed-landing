@@ -172,7 +172,7 @@ const RotatingLogo = ({ size = 'xlarge', className = '', style = {} }) => {
         </text>
       </motion.svg>
 
-      {/* "OB" monogram */}
+      {/* Enhanced "OB" monogram with brand font styling */}
       <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
@@ -192,40 +192,42 @@ const RotatingLogo = ({ size = 'xlarge', className = '', style = {} }) => {
               ease: "easeInOut"
             }}
           >
-            {/* "O" */}
+            {/* "O" - Enhanced brand font styling */}
             <span
               style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
+                fontFamily: "'Merriweather', 'Crimson Text', 'Playfair Display', Georgia, serif",
                 fontSize: `${dims.obSize}px`,
-                fontWeight: 800,
-                letterSpacing: '-0.04em',
-                background: 'linear-gradient(165deg, #FFFFFF 0%, #FFFFFF 30%, #FBF8EF 70%, #E8DED0 100%)',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+                fontWeight: 900,
+                letterSpacing: '-0.02em',
+                color: '#FFFFFF',
                 position: 'relative',
                 zIndex: 2,
                 marginRight: size === 'xlarge' ? '-42px' : `-${dims.obSize * 0.22}px`,
-                filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.2))',
+                textShadow: '0 8px 16px rgba(0,0,0,0.4), 0 4px 8px rgba(0,0,0,0.3)',
+                lineHeight: 1,
+                display: 'inline-block',
+                WebkitFontSmoothing: 'antialiased',
+                MozOsxFontSmoothing: 'grayscale',
               }}
             >
               O
             </span>
             
-            {/* "B" */}
+            {/* "B" - Enhanced brand font styling with subtle overlap */}
             <span
               style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
+                fontFamily: "'Merriweather', 'Crimson Text', 'Playfair Display', Georgia, serif",
                 fontSize: `${dims.obSize}px`,
-                fontWeight: 800,
-                letterSpacing: '-0.04em',
-                background: 'linear-gradient(165deg, #E5C7B1 0%, #D4B5A0 40%, #C2A58E 100%)',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+                fontWeight: 900,
+                letterSpacing: '-0.02em',
+                color: '#FBF8EF',
                 position: 'relative',
                 zIndex: 1,
-                filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.15))',
+                textShadow: '0 8px 16px rgba(0,0,0,0.35), 0 4px 8px rgba(0,0,0,0.25)',
+                lineHeight: 1,
+                display: 'inline-block',
+                WebkitFontSmoothing: 'antialiased',
+                MozOsxFontSmoothing: 'grayscale',
               }}
             >
               B

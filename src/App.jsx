@@ -6,9 +6,9 @@ import Footer from './components/layout/Footer'
 import Hero from './components/sections/Hero'
 import SocialProof from './components/sections/SocialProof'
 import WhatThisIs from './components/sections/WhatThisIs'
+import FormSection from './components/sections/FormSection'
 import PricingTiers from './components/sections/PricingTiers'
 import WhyJoin from './components/sections/WhyJoin'
-import FormSection from './components/sections/FormSection'
 
 function App() {
   const containerRef = useRef(null)
@@ -57,9 +57,9 @@ function App() {
         <Hero />
         <SocialProof />
         <WhatThisIs />
+        <FormSection />
         <PricingTiers />
         <WhyJoin />
-        <FormSection />
       </main>
       <Footer />
     </div>

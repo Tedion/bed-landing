@@ -11,7 +11,7 @@ const WhyJoin = () => {
   ]
 
   return (
-    <section className="relative py-24 sm:py-32 px-6 sm:px-8 bg-gradient-to-b from-white via-brand-cream to-white">
+    <section className="relative py-24 sm:py-32 px-6 sm:px-8 bg-gradient-to-b from-white via-brand-cream to-white overflow-hidden">
       {/* Enhanced background decoration with brand colors */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-terracotta/6 rounded-full blur-3xl" />
@@ -30,9 +30,9 @@ const WhyJoin = () => {
           Why providers join
         </motion.h2>
         
-        {/* Fixed grid with equal heights */}
+        {/* Fixed grid with equal heights - fixed overflow */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 overflow-visible"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
@@ -41,53 +41,82 @@ const WhyJoin = () => {
             visible: { transition: { staggerChildren: 0.1 }}
           }}
         >
-          {reasons.map((item, i) => (
-            <motion.div
-              key={i}
-              className="relative bg-gradient-to-br from-white to-brand-cream/30 border-2 border-gray-100 rounded-2xl p-8 flex flex-col justify-between min-h-[280px] group hover:border-brand-terracotta hover:shadow-xl hover:bg-white transition-all duration-300"
-              variants={{
-                hidden: { opacity: 0, y: 30 },
-                visible: { 
-                  opacity: 1, 
-                  y: 0,
-                  transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-                }
-              }}
-              whileHover={{ 
-                y: -8,
-                transition: { duration: 0.3 }
-              }}
-            >
-              {/* Gradient accent on hover */}
-              <div className="absolute inset-0 rounded-2xl bg-brand-terracotta/0 group-hover:bg-brand-terracotta/5 transition-opacity duration-300" />
-              
-              {/* Number badge with brand terracotta */}
-              <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-terracotta/10 flex items-center justify-center text-brand-terracotta font-bold text-sm group-hover:bg-brand-terracotta group-hover:text-white transition-all duration-300 shadow-sm">
-                {i + 1}
-              </div>
-              
-              {/* Content */}
-              <div className="flex-1 flex flex-col justify-center relative z-10">
-                <h3 className="text-2xl sm:text-3xl font-serif leading-tight text-gray-900 mb-2 group-hover:text-brand-terracotta transition-colors">
-                  {item.title}
-                  <br />
-                  <span className="text-brand-terracotta">{item.subtitle}</span>
-                </h3>
-              </div>
-              
-              {/* Hover arrow */}
+          {reasons.map((item, i) => {
+            // Card 4 (Business growth support) gets dark green background
+            const isDarkCard = i === 3
+            
+            return (
               <motion.div
-                className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity relative z-10"
-                initial={false}
-                animate={{ x: [0, 4, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
+                key={i}
+                className={`relative border-2 rounded-2xl p-8 flex flex-col justify-between min-h-[280px] group transition-all duration-300 overflow-hidden ${
+                  isDarkCard
+                    ? 'bg-gradient-to-br from-[#505631] to-[#3d4528] border-[#505631] text-white hover:border-brand-olive hover:shadow-xl'
+                    : 'bg-gradient-to-br from-white to-brand-cream/30 border-gray-100 hover:border-brand-terracotta hover:shadow-xl hover:bg-white'
+                }`}
+                variants={{
+                  hidden: { opacity: 0, y: 30 },
+                  visible: { 
+                    opacity: 1, 
+                    y: 0,
+                    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+                  }
+                }}
+                whileHover={{ 
+                  y: -8,
+                  transition: { duration: 0.3 }
+                }}
+                style={{ 
+                  isolation: 'isolate',
+                  contain: 'layout style paint'
+                }}
               >
-                <svg className="w-6 h-6 text-brand-terracotta" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
+                {/* Gradient accent on hover - contained within card */}
+                <div className={`absolute inset-0 rounded-2xl transition-opacity duration-300 pointer-events-none ${
+                  isDarkCard
+                    ? 'bg-brand-terracotta/0 group-hover:bg-brand-terracotta/10'
+                    : 'bg-brand-terracotta/0 group-hover:bg-brand-terracotta/5'
+                }`} />
+                
+                {/* Number badge */}
+                <div className={`absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 shadow-sm z-10 ${
+                  isDarkCard
+                    ? 'bg-white/10 text-white group-hover:bg-white group-hover:text-[#505631]'
+                    : 'bg-brand-terracotta/10 text-brand-terracotta group-hover:bg-brand-terracotta group-hover:text-white'
+                }`}>
+                  {i + 1}
+                </div>
+                
+                {/* Content */}
+                <div className="flex-1 flex flex-col justify-center relative z-10">
+                  <h3 className={`text-2xl sm:text-3xl font-serif leading-tight mb-2 transition-colors ${
+                    isDarkCard
+                      ? 'text-white group-hover:text-white'
+                      : 'text-gray-900 group-hover:text-brand-terracotta'
+                  }`}>
+                    {item.title}
+                    <br />
+                    <span className={isDarkCard ? 'text-white/90' : 'text-brand-terracotta'}>
+                      {item.subtitle}
+                    </span>
+                  </h3>
+                </div>
+                
+                {/* Hover arrow */}
+                <motion.div
+                  className={`mt-6 opacity-0 group-hover:opacity-100 transition-opacity relative z-10 ${
+                    isDarkCard ? 'text-white' : 'text-brand-terracotta'
+                  }`}
+                  initial={false}
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          ))}
+            )
+          })}
         </motion.div>
         
       </div>
