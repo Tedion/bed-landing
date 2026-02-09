@@ -13,14 +13,17 @@ export default {
         mono: ['SF Mono', 'Monaco', 'Inconsolata', 'monospace'],
       },
       colors: {
+        // Shopify Live Globe 2025 palette (Awwwards SOTD)
+        shopify: {
+          green: '#9dc44d',
+          orange: '#f49f46',
+        },
         brand: {
-          // Exact brand colors from style guide
-          sage: '#2B3210',        // Muted forest green
-          cream: '#FBF8EF',       // Very light peachy cream
-          terracotta: '#DE6E27',  // Warm terracotta orange
-          beige: '#E5E2D9',       // Light beige/off-white
-          olive: '#505631',       // Warm sandy brown/olive green
-          // Refined color variations for better duo
+          sage: '#2B3210',
+          cream: '#FBF8EF',
+          terracotta: '#DE6E27',
+          beige: '#E5E2D9',
+          olive: '#505631',
           terracottaLight: '#E87A35',
           terracottaDark: '#C85D20',
           sageLight: '#3A4220',

@@ -7,7 +7,8 @@ const Header = () => {
   const { scrollY } = useScroll()
   
   // Logo fades in as hero logo fades out
-  const logoOpacity = useTransform(scrollY, [100, 200], [0, 1])
+  const logoOpacity = useTransform(scrollY, [80, 180], [0, 1])
+  const logoOpacityTop = useTransform(scrollY, [0, 100], [1, 0])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,19 +34,29 @@ const Header = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       style={{
-        backgroundColor: scrolled ? 'rgba(251, 248, 239, 0.95)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(10px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(0,0,0,0.05)' : 'none',
+        backgroundColor: scrolled ? 'rgba(251, 248, 239, 0.95)' : 'rgba(10, 12, 8, 0.4)',
+        backdropFilter: scrolled ? 'blur(12px)' : 'blur(8px)',
+        borderBottom: scrolled ? '1px solid rgba(0,0,0,0.05)' : '1px solid rgba(255,255,255,0.08)',
       }}
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 h-20 flex items-center justify-between">
         
-        {/* Enhanced logo in header */}
-        <motion.div 
-          className="flex items-center gap-3"
-          style={{ opacity: logoOpacity }}
-        >
-          {/* Enhanced mini logo with brand colors */}
+        {/* Logo - top (dark hero) vs scrolled (light) */}
+        <div className="relative flex items-center min-w-[200px]">
+          <motion.div 
+            className="absolute flex items-center gap-3"
+            style={{ opacity: logoOpacityTop }}
+          >
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-terracotta/90 flex items-center justify-center">
+              <span className="text-white font-black text-xs sm:text-sm" style={{ fontFamily: "'Playfair Display', serif" }}>OB</span>
+            </div>
+            <span className="text-white font-semibold text-base sm:text-lg">Open Bed Oregon</span>
+          </motion.div>
+          <motion.div 
+            className="flex items-center gap-3"
+            style={{ opacity: logoOpacity }}
+          >
+            {/* Enhanced mini logo with brand colors */}
           <motion.div 
             className="relative w-10 h-10 sm:w-12 sm:h-12"
             whileHover={{ scale: 1.1, rotate: 5 }}
@@ -112,7 +123,8 @@ const Header = () => {
           >
             Open Bed Oregon
           </motion.span>
-        </motion.div>
+          </motion.div>
+        </div>
         
         {/* Desktop CTA */}
         <motion.button 

@@ -6,16 +6,17 @@ const WhatThisIs = () => {
   const isInView = useInView(ref, { once: true, amount: 0.4 })
 
   return (
-    <section ref={ref} className="relative py-24 sm:py-32 px-6 sm:px-8 bg-white">
-      {/* Background decoration */}
+    <section ref={ref} className="relative py-24 sm:py-32 px-6 sm:px-8 bg-white overflow-hidden">
+      {/* Dot grid + glow */}
+      <div className="absolute inset-0 dot-grid opacity-20" />
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-brand-olive/3 rounded-full blur-3xl -translate-y-1/2" />
-        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-brand-terracotta/4 rounded-full blur-3xl translate-y-1/2" />
+        <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-brand-olive/4 rounded-full blur-[100px] -translate-y-1/2" />
+        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-brand-terracotta/5 rounded-full blur-[100px] translate-y-1/2" />
       </div>
       
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
-          className="grid md:grid-cols-2 gap-6 overflow-hidden rounded-3xl"
+          className="grid md:grid-cols-2 gap-6 overflow-hidden rounded-[32px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.12)]"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.4 }}
@@ -52,18 +53,18 @@ const WhatThisIs = () => {
           {/* Light card */}
           <motion.div
             variants={{
-              hidden: { x: 50, opacity: 0 },
+              hidden: { x: 60, opacity: 0 },
               visible: { 
                 x: 0, 
                 opacity: 1,
-                transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+                transition: { duration: 1, ease: [0.16, 1, 0.3, 1] }
               }
             }}
             whileHover={{ 
               scale: 1.02,
               transition: { duration: 0.3 }
             }}
-            className="relative p-10 sm:p-12 md:p-16 bg-gradient-to-br from-white to-brand-cream/50 overflow-hidden rounded-3xl shadow-xl border border-gray-100"
+            className="relative p-10 sm:p-12 md:p-16 bg-gradient-to-br from-white to-brand-cream/50 overflow-hidden rounded-3xl shadow-[0_25px_80px_-20px_rgba(0,0,0,0.08)] border border-gray-100"
           >
             {/* Ambient glow */}
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand-terracotta/5 blur-[120px]" />

@@ -6,68 +6,72 @@ const Hero = () => {
   const containerRef = useRef(null)
   const { scrollY } = useScroll()
   
-  // Subtle parallax effects
-  const yText = useTransform(scrollY, [0, 500], [0, -50])
-  const yLogo = useTransform(scrollY, [0, 500], [0, -80])
-  const opacity = useTransform(scrollY, [0, 300], [1, 0])
+  const yText = useTransform(scrollY, [0, 500], [0, -80])
+  const yLogo = useTransform(scrollY, [0, 500], [0, -120])
+  const opacity = useTransform(scrollY, [0, 400], [1, 0])
+  const scale = useTransform(scrollY, [0, 400], [1, 0.85])
 
   const scrollToForm = () => {
-    const form = document.getElementById('signup-form')
-    if (form) {
-      form.scrollIntoView({ behavior: 'smooth' })
-    }
+    document.getElementById('signup-form')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center px-6 sm:px-8 overflow-hidden bg-gradient-to-br from-brand-cream via-white to-brand-cream"
+      className="relative min-h-screen flex items-center justify-center px-6 sm:px-8 overflow-hidden bg-[#0a0c08]"
     >
-      {/* Enhanced background with brand colors */}
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-cream via-white to-brand-cream" />
+      {/* Brand gradient - sage/terracotta */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0a0c08] via-[#1a1f0a] to-[#0d0f0a]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-sage/20 via-transparent to-brand-terracotta/5" />
       
-      {/* Decorative elements using brand terracotta */}
-      <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-brand-terracotta/8 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-terracotta/6 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-olive/5 rounded-full blur-3xl" />
+      {/* Subtle dot grid */}
+      <div className="absolute inset-0 dot-grid opacity-20" />
       
-      {/* Main content */}
+      {/* Glow orbs - brand colors */}
+      <motion.div 
+        className="absolute top-0 right-0 w-[800px] h-[800px] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3"
+        style={{ background: 'radial-gradient(circle, rgba(222,110,39,0.25) 0%, transparent 60%)', scale }}
+      />
+      <motion.div 
+        className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3"
+        style={{ background: 'radial-gradient(circle, rgba(80,86,49,0.2) 0%, transparent 60%)', scale }}
+      />
+      
       <div className="relative z-10 max-w-6xl mx-auto w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
-          {/* Left column - Text content */}
+          {/* Left - Text */}
           <motion.div
             className="text-center lg:text-left"
             style={{ y: yText, opacity }}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Badge */}
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-terracotta/10 text-brand-terracotta text-sm font-semibold mb-6 border border-brand-terracotta/20"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-terracotta/20 text-brand-terracottaLight text-sm font-semibold mb-8 border border-brand-terracotta/30"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
             >
               <div className="w-2 h-2 rounded-full bg-brand-terracotta animate-pulse" />
               <span>33 years of AFH experience</span>
             </motion.div>
 
-            {/* Headline */}
             <motion.h1 
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif mb-6 leading-[1.1] text-brand-sage"
-              initial={{ opacity: 0, y: 20 }}
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif mb-6 leading-[1.05] text-white"
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
+              transition={{ delay: 0.3, duration: 1 }}
             >
               Oregon's Professional{' '}
-              <span className="block mt-2 text-brand-terracotta">AFH Network</span>
+              <span className="block mt-2 bg-gradient-to-r from-brand-terracotta to-brand-terracottaLight bg-clip-text text-transparent">
+                AFH Network
+              </span>
             </motion.h1>
             
-            {/* Description */}
             <motion.p 
-              className="text-xl sm:text-2xl text-gray-700 font-light mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+              className="text-xl sm:text-2xl text-white/70 font-light mb-10 max-w-2xl mx-auto lg:mx-0"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
@@ -75,7 +79,6 @@ const Hero = () => {
               Real-time placements. Direct connections. Better outcomes.
             </motion.p>
             
-            {/* CTA Button */}
             <motion.div
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               initial={{ opacity: 0, y: 20 }}
@@ -83,11 +86,8 @@ const Hero = () => {
               transition={{ delay: 0.7, duration: 0.8 }}
             >
               <motion.button
-                className="group relative px-8 py-4 bg-brand-terracotta hover:bg-brand-terracottaDark text-white text-lg font-semibold rounded-full overflow-hidden shadow-xl shadow-brand-terracotta/30"
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: '0 25px 50px rgba(222, 110, 39, 0.4)'
-                }}
+                className="group relative px-8 py-4 bg-brand-terracotta hover:bg-brand-terracottaLight text-white text-lg font-semibold rounded-full overflow-hidden"
+                whileHover={{ scale: 1.04, boxShadow: '0 0 50px rgba(222, 110, 39, 0.5)' }}
                 whileTap={{ scale: 0.98 }}
                 onClick={scrollToForm}
               >
@@ -98,20 +98,15 @@ const Hero = () => {
                   </svg>
                 </span>
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
                   animate={{ x: ['-100%', '100%'] }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    repeatDelay: 1,
-                    ease: 'easeInOut'
-                  }}
+                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 1.5, ease: 'easeInOut' }}
                 />
               </motion.button>
               
               <motion.button
-                className="px-8 py-4 bg-white border-2 border-gray-200 hover:border-brand-terracotta hover:text-brand-terracotta text-gray-700 text-lg font-semibold rounded-full transition-all shadow-sm hover:shadow-md"
-                whileHover={{ scale: 1.05 }}
+                className="px-8 py-4 bg-white/10 border-2 border-white/30 hover:bg-white/20 hover:border-white/50 text-white text-lg font-semibold rounded-full backdrop-blur-sm transition-all"
+                whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={scrollToForm}
               >
@@ -119,7 +114,6 @@ const Hero = () => {
               </motion.button>
             </motion.div>
 
-            {/* Trust indicators */}
             <motion.div
               className="flex flex-wrap justify-center lg:justify-start gap-6 mt-12"
               initial={{ opacity: 0 }}
@@ -131,11 +125,8 @@ const Hero = () => {
                 { icon: '✓', text: '1,200+ Placements' },
                 { icon: '✓', text: '24/7 Support' },
               ].map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-2 text-gray-700"
-                >
-                  <span className="w-6 h-6 bg-brand-terracotta/10 rounded-full flex items-center justify-center text-brand-terracotta text-sm font-bold">
+                <div key={index} className="flex items-center gap-2 text-white/80">
+                  <span className="w-6 h-6 bg-brand-terracotta/30 rounded-full flex items-center justify-center text-brand-terracottaLight text-sm font-bold">
                     {item.icon}
                   </span>
                   <span className="text-sm font-medium">{item.text}</span>
@@ -144,34 +135,37 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right column - Rotating Logo */}
+          {/* Right - Rotating Logo only */}
           <motion.div
             className="relative flex items-center justify-center"
             style={{ y: yLogo }}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ delay: 0.4, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Rotating Logo with subtle breathing animation */}
             <motion.div
-              animate={{ 
-                y: [0, -10, 0],
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
+              className="relative"
+              animate={{ y: [0, -14, 0], scale: [1, 1.03, 1] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             >
               <RotatingLogo size="large" />
+              <div 
+                className="absolute inset-0 -z-10 rounded-full blur-3xl opacity-40"
+                style={{ background: 'radial-gradient(circle, rgba(222,110,39,0.5) 0%, transparent 70%)' }}
+              />
             </motion.div>
           </motion.div>
         </div>
       </div>
       
-      {/* Scroll indicator */}
+      <div className="absolute bottom-0 left-0 right-0 h-20 overflow-hidden pointer-events-none">
+        <svg viewBox="0 0 1440 80" className="w-full h-full" preserveAspectRatio="none">
+          <path fill="#FBF8EF" d="M0,80 Q720,0 1440,80 L1440,80 L0,80 Z" />
+        </svg>
+      </div>
+
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 cursor-pointer z-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
@@ -179,19 +173,19 @@ const Hero = () => {
         onClick={scrollToForm}
       >
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="flex flex-col items-center gap-2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex flex-col items-center gap-3"
         >
-          <span className="text-xs tracking-wider text-gray-500 uppercase">Scroll</span>
-          <svg width="24" height="40" viewBox="0 0 24 40" className="text-gray-400">
-            <rect x="0.5" y="0.5" width="23" height="39" rx="11.5" stroke="currentColor" strokeOpacity="0.4" fill="none"/>
+          <span className="text-xs tracking-[0.25em] text-white/60 uppercase font-medium">Scroll</span>
+          <svg width="24" height="40" viewBox="0 0 24 40" className="text-white/50">
+            <rect x="0.5" y="0.5" width="23" height="39" rx="11.5" stroke="currentColor" strokeOpacity="0.5" fill="none"/>
             <motion.circle
               cx="12"
               cy="12"
               r="4"
               fill="#DE6E27"
-              animate={{ cy: [12, 24, 12], opacity: [1, 0.3, 1] }}
+              animate={{ cy: [12, 24, 12], opacity: [1, 0.2, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
           </svg>

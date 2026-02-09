@@ -53,7 +53,8 @@ const FormSection = () => {
 
   return (
     <section id="signup-form" ref={ref} className="relative py-32 px-8 overflow-hidden bg-gradient-to-b from-white via-brand-cream to-brand-cream">
-      {/* Enhanced background with brand colors */}
+      {/* Dot grid + enhanced background */}
+      <div className="absolute inset-0 dot-grid opacity-15" />
       <div className="absolute inset-0">
         {/* Multiple decorative elements for depth */}
         <div className="absolute top-0 left-1/4 w-[700px] h-[700px] bg-brand-terracotta/8 rounded-full blur-3xl -translate-y-1/2" />

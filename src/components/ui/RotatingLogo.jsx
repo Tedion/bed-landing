@@ -50,7 +50,7 @@ const RotatingLogo = ({ size = 'xlarge', className = '', style = {} }) => {
         animate={{ rotate: 360 }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         style={{ 
-          filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.2)) drop-shadow(0 10px 20px rgba(222,110,39,0.3))',
+          filter: 'drop-shadow(0 40px 80px rgba(0,0,0,0.35)) drop-shadow(0 0 80px rgba(222,110,39,0.3)) drop-shadow(0 20px 40px rgba(222,110,39,0.25))',
           transformOrigin: 'center center',
         }}
       >
@@ -89,8 +89,8 @@ const RotatingLogo = ({ size = 'xlarge', className = '', style = {} }) => {
           
           {/* Outer glow */}
           <radialGradient id={`outerGlow-${size}`} cx="50%" cy="50%">
-            <stop offset="0%" stopColor="rgba(222,110,39,0.2)" />
-            <stop offset="50%" stopColor="rgba(222,110,39,0.1)" />
+            <stop offset="0%" stopColor="rgba(244,159,70,0.3)" />
+            <stop offset="50%" stopColor="rgba(157,196,77,0.15)" />
             <stop offset="100%" stopColor="transparent" />
           </radialGradient>
           
