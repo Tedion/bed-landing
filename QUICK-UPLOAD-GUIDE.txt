@@ -1,0 +1,60 @@
+═══════════════════════════════════════════════════════════════
+  QUICK UPLOAD GUIDE - Fix TERRACOTTA_BG Error
+═══════════════════════════════════════════════════════════════
+
+✅ STEP 1: LOGIN TO HOSTINGER CPANEL
+   - Go to: https://hpanel.hostinger.com
+   - Login with your Hostinger account
+   - Find your domain: mediumturquoise-buffalo-583035.hostingersite.com
+   - Click "Manage" or go to File Manager
+
+✅ STEP 2: NAVIGATE TO PUBLIC_HTML
+   - In File Manager, navigate to:
+     domains/mediumturquoise-buffalo-583035.hostingersite.com/public_html/
+   
+✅ STEP 3: DELETE OLD FILES
+   - Select ALL files and folders in public_html
+   - Click "Delete" button
+   - Confirm deletion
+   ⚠️ IMPORTANT: You MUST delete old files first!
+
+✅ STEP 4: UPLOAD NEW BUILD
+   
+   OPTION A: Upload ZIP file (Easiest)
+   - Click "Upload" button in File Manager
+   - Upload: open-bed-fixed-build.zip
+   - After upload, right-click the ZIP file
+   - Select "Extract" or "Extract Here"
+   - Delete the ZIP file after extraction
+   
+   OPTION B: Upload via SFTP (FileZilla)
+   - Open FileZilla
+   - Connect to: mediumturquoise-buffalo-583035.hostingersite.com
+   - Port: 65002, Protocol: SFTP
+   - Username: u167611500
+   - Password: Centriweb2024!
+   - Navigate to: domains/.../public_html/
+   - Upload ALL contents from: /home/teddy/Open-Bed-1/dist/
+
+✅ STEP 5: VERIFY FILES
+   Check that these exist in public_html:
+   ✓ index.html
+   ✓ .htaccess
+   ✓ assets/ folder (with ~86 files inside)
+
+✅ STEP 6: TEST THE SITE
+   - Go to: http://mediumturquoise-buffalo-583035.hostingersite.com
+   - Press Ctrl+Shift+R (hard refresh to clear cache)
+   - The TERRACOTTA_BG error should be GONE!
+
+═══════════════════════════════════════════════════════════════
+  TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════
+
+If error persists:
+1. Clear browser cache completely (Ctrl+Shift+Delete)
+2. Try incognito/private browsing mode
+3. Wait 2-3 minutes for changes to propagate
+4. Check browser console (F12) for any new errors
+
+═══════════════════════════════════════════════════════════════

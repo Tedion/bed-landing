@@ -14,19 +14,25 @@ export default {
       },
       colors: {
         primary: {
-          sage: '#2B3210',
-          cream: '#FBF8EF',
-          terracotta: '#DE6E27',
-          forest: '#E5E2D9',
-          tan: '#505631',
-          copper: '#BB8853',
+          forest: '#2B3210',      // Deep forest green
+          peach: '#AFBFBE',        // Light peach/beige (corrected from #AFBFBEF)
+          terracotta: '#DE6E27',   // Warm terracotta orange
+          golden: '#505431',       // Golden brown
+          cream: '#FBF8EF',         // Cream background
         },
         neutral: {
           white: '#FFFFFF',
           gray: {
             50: '#FAFAFA',
             100: '#F5F5F5',
-            900: '#393939',
+            200: '#E5E5E5',
+            300: '#D4D4D4',
+            400: '#A3A3A3',
+            500: '#737373',
+            600: '#525252',
+            700: '#404040',
+            800: '#262626',
+            900: '#171717',
           },
         },
       },

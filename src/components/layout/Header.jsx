@@ -24,6 +24,10 @@ const Header = () => {
     }
   }
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <motion.header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
@@ -31,49 +35,44 @@ const Header = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       style={{
-        backgroundColor: scrolled ? 'rgba(251, 248, 239, 0.95)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(10px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(0,0,0,0.05)' : 'none',
+        backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.98)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(16px)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(175, 191, 190, 0.2)' : 'none',
+        boxShadow: scrolled ? '0 1px 3px rgba(0,0,0,0.04)' : 'none',
       }}
+      role="banner"
     >
-      <div className="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-6 md:px-8 h-20 md:h-24 flex items-center justify-between" aria-label="Main navigation">
         
-        {/* Small clean logo in header */}
-        <motion.div 
-          className="flex items-center gap-3"
-          style={{ opacity: logoOpacity }}
-        >
-          {/* Mini version - just the circle with OB */}
-          <div className="relative w-12 h-12">
-            <div 
-              className="absolute inset-0 rounded-full"
-              style={{
-                background: 'linear-gradient(135deg, #DE6E27 0%, #B85A1F 100%)',
-              }}
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span 
-                className="text-white font-bold text-sm"
-                style={{ fontFamily: "'Playfair Display', serif" }}
-              >
-                OB
-              </span>
-            </div>
-          </div>
-          <span className="text-lg font-semibold text-gray-900">Open Bed Oregon</span>
-        </motion.div>
-        
-        {/* CTA */}
+        {/* Logo - matches brand: terracotta circle + OB monogram */}
         <motion.button 
-          className="px-6 py-2.5 bg-[#DE6E27] hover:bg-[#C85D20] text-white font-medium rounded-full transition-colors"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={scrollToForm}
+          onClick={scrollToTop}
+          className="flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-[#DE6E27]/50 rounded-lg"
+          style={{ opacity: logoOpacity }}
+          aria-label="Open Bed Oregon - Home"
         >
-          Join the Network
+          <div className="relative w-12 h-12 md:w-14 md:h-14 flex-shrink-0" aria-hidden="true">
+            <svg viewBox="0 0 100 100" className="w-full h-full rounded-full" style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.15))' }}>
+              <circle cx="50" cy="50" r="50" fill="#8B4D3C" />
+              <text x="24" y="62" fontSize="34" fontFamily="'Playfair Display', Georgia, serif" fontWeight="700" fill="#F0EADF">O</text>
+              <text x="42" y="62" fontSize="30" fontFamily="'Playfair Display', Georgia, serif" fontWeight="700" fill="#CBB9AE">B</text>
+            </svg>
+          </div>
+          <span className="text-lg md:text-xl font-semibold text-[#2B3210]">Open Bed</span>
         </motion.button>
         
-      </div>
+        {/* CTA Button */}
+        <motion.button 
+          className="px-4 md:px-5 py-3 md:py-3.5 bg-[#DE6E27] hover:bg-[#C85D20] text-white text-base md:text-lg font-medium rounded-full transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#DE6E27]/30 shadow-md hover:shadow-lg"
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          onClick={scrollToForm}
+          aria-label="Join our community"
+        >
+          Join our community
+        </motion.button>
+        
+      </nav>
     </motion.header>
   )
 }
